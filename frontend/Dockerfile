@@ -4,14 +4,13 @@ WORKDIR /app
 
 # Copier les fichiers package d'abord
 COPY package*.json ./
-COPY vite.config.js ./
 
 # Installer toutes les dépendances (dont devDependencies)
 RUN npm install
 
 # Copier le code source
 COPY . .
-
+COPY vite.config.js ./ 
 # Exposer le port que Vite utilise (généralement 5173 ou 3000)
 EXPOSE 5173
 
