@@ -35,7 +35,7 @@ pipeline {
 
         stage('Install dependencies - Backend') {
             steps {
-                dir('back-end') {
+                dir('backend') {
                     sh 'npm install'
                 }
             }
@@ -96,7 +96,6 @@ pipeline {
                 '''
             }
         }
-    }
 
         stage('Smoke Test') {
             steps {
