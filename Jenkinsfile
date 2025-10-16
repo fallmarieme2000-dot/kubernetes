@@ -9,6 +9,7 @@ pipeline {
         DOCKER_HUB_USER = 'marieme0516'
         FRONT_IMAGE = 'react-frontend'
         BACK_IMAGE  = 'express-backend'
+        KUBECONFIG = '/var/lib/jenkins/.kube/config' // chemin vers ton kubeconfig sur le serveur Jenkins
     }
     triggers {
         // Pour que le pipeline démarre quand le webhook est reçu
@@ -85,17 +86,17 @@ pipeline {
             }
         }
 
-        stage('Deploy (compose.yaml)') {
+         stage('Deploy to Kubernetes') {
             steps {
-                dir('.') {  
-                    sh 'docker-compose -f compose.yaml down || true'
-                    sh 'docker-compose -f compose.yaml pull'
-                    sh 'docker-compose -f compose.yaml up -d'
-                    sh 'docker-compose -f compose.yaml ps'
-                    sh 'docker-compose -f compose.yaml logs --tail=50'
-                }
+                echo "Déploiement sur le cluster Kubernetes..."
+                sh '''
+                kubectl apply -f k8s/mongo-deployment.yaml
+                kubectl apply -f k8s/backend-deployment.yaml
+                kubectl apply -f k8s/frontend-deployment.yaml
+                '''
             }
         }
+    }
 
         stage('Smoke Test') {
             steps {
