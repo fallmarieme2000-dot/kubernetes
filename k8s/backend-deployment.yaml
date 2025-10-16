@@ -19,7 +19,7 @@ spec:
         - containerPort: 5000
         env:
         - name: MONGO_URL
-          value: mongodb://mongo-service:27017/monapp
+          value: mongodb://mongo-service:27017/smartphoneDB
 ---
 apiVersion: v1
 kind: Service
