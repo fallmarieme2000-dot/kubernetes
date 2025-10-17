@@ -40,5 +40,5 @@ spec:
   ports:
     - port: 5000
       targetPort: 5000
-       nodePort: 30050   # NodePort fixe pour Docker Desktop
+      nodePort: 30050   # NodePort fixe pour Docker Desktop
   type: NodePort
