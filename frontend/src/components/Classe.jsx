@@ -5,7 +5,7 @@ import DetaillerSmartphone from "./DetaillerSmartphone.jsx";
 import EditerSmartphone from "./EditerSmartphone.jsx";
 
 // Backend Express
-const API_BASE = `${import.meta.env.VITE_API_URL || "http://localhost:30050"}/api/smartphones`;
+const API_BASE = `${import.meta.env.REACT_APP_API_URL || "http://localhost:30050"}/api/smartphones`;
 
 function Classe() {
   const [smartphones, setSmartphones] = useState([]);
