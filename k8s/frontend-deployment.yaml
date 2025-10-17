@@ -20,6 +20,9 @@ spec:
         env:
         - name: REACT_APP_API_URL
           value: http://backend-service:5000
+        # Commande pour démarrer Vite sur 0.0.0.0
+        command: ["sh", "-c", "vite --host=0.0.0.0"]
+
 ---
 apiVersion: v1
 kind: Service
@@ -29,6 +32,7 @@ spec:
   selector:
     app: frontend
   ports:
-  - port: 5173
-    targetPort: 5173
-  type: LoadBalancer
+    - port: 5173        # Port exposé par le service
+      targetPort: 5173  # Port sur lequel le pod écoute
+      nodePort: 30419   # NodePort fixe pour Docker Desktop
+  type: NodePort
