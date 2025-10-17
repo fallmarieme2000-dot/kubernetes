@@ -20,8 +20,7 @@ spec:
         env:
         - name: REACT_APP_API_URL
           value: http://localhost:30050
-        # Commande pour démarrer Vite sur 0.0.0.0
-        command: ["sh", "-c", "vite --host=0.0.0.0"]
+      
 
 ---
 apiVersion: v1
